@@ -75,7 +75,8 @@ type Logger interface {
 
 // Logging configuration to be passed to all loggers during initialization.
 type LogConfig struct {
-	Name string
+	Name          string
+	DirectoryName string
 }
 
 func (c LogConfig) String() string {
@@ -111,6 +112,8 @@ func NewLogger(config *LogConfig) (Logger, error) {
 		return NewConsoleLogger(config)
 	case "syslog":
 		return NewSysLogger(config)
+	case "file":
+		return NewFileLogger(config)
 	}
 	return nil, errors.New(fmt.Sprintf("Unknown logger: %v", config))
 }
