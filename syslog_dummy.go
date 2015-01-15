@@ -3,17 +3,15 @@
 package log
 
 import (
+	"io"
 	"os"
 )
 
 func NewSysLogger(config *LogConfig) (Logger, error) {
+	return &dummyLogger{}, nil
 }
 
 type dummyLogger struct{}
-
-func NewConsoleLogger(config *LogConfig) (Logger, error) {
-	return &dummyLogger{}, nil
-}
 
 func (l *dummyLogger) Writer(sev Severity) io.Writer {
 	return os.Stdout
