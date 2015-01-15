@@ -7,14 +7,6 @@ import (
 	"path/filepath"
 )
 
-// Syslogger sends all your logs to syslog
-// Note: the logs are going to MAIL_LOG facility
-type sysLogger struct {
-	info *syslog.Writer
-	warn *syslog.Writer
-	err  *syslog.Writer
-}
-
 var newSyslogWriter = syslog.New // for mocking in tests
 
 func NewSysLogger(config *LogConfig) (Logger, error) {

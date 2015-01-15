@@ -4,7 +4,6 @@ import (
 	stdLog "log"
 	"os"
 	"os/user"
-	"strings"
 )
 
 func NewFileLogger(config *LogConfig) (Logger, error) {
